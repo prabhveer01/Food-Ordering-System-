@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP</title>
+    <style>
+        div{
+            margin-top: 100px;
+        }
+        form{
+            margin :auto;
+            padding : 100px;
+            text-align: center;
+            width:40%;
+            background-color: rgb(219, 215, 215);
+            box-shadow: 3px 3px 5px grey;
+            border : solid black;
+        }
+        input{
+            border-radius: 10px;
+            width : 50%;
+            height : 30px;
+            box-shadow: 3px 3px 5px grey;
+        }
+        button{
+            border-radius: 10px;
+            width : 30%;
+            height : 25px;
+            font-size: large;
+        }
+        button:hover{
+            background-color: rgb(204, 203, 203);
+        }
+        #timer{
+            font-weight: bold;
+            font-size: large;
+        }
+        #resend{
+            visibility: hidden;
+        }
+    </style>
+    <script>
+        var time=60;
+        var x=setInterval(function(){
+            document.getElementById("timer").innerHTML="Resend OTP in "+time+" Seconds";
+            time--;
+            if(time<0){
+                clearInterval(x);
+                document.getElementById("timer").innerHTML="";
+                document.getElementById("resend").style.visibility="visible";
+            }
+        },1000);
+    </script>
+</head>
+<body>
+    <div>
+        <form method="POST"  action="COD1.php">
+            <h2>Enter OTP sent to your mail</h2>
+            <input type="text" placeholder="Enter OTP"><br><br>
+            <button type="submit">Submit</button>
+            <p id="timer"></p>
+            <button href="otp.html" id="resend">Reset OTP</button>
+        </form>
+    </div>
+</body>
+</html>
